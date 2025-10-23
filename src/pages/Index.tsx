@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
+import { useNavigate } from 'react-router-dom';
 
 type TaskStatus = 'pending' | 'in-progress' | 'done';
 
@@ -26,6 +27,7 @@ interface Task {
 
 const Index = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [tasks, setTasks] = useState<Task[]>([
     {
       id: 1,
@@ -199,7 +201,7 @@ const Index = () => {
               Task Manager
             </h1>
             <nav className="flex items-center gap-4">
-              <Button variant="ghost" className="gap-2">
+              <Button variant="ghost" className="gap-2" onClick={() => navigate('/profile')}>
                 <Icon name="User" size={18} />
                 Профиль
               </Button>
